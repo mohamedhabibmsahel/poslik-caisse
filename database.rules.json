@@ -1,0 +1,31 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "meta": {
+      "registerCounter": {
+        ".read": true,
+        ".write": true,
+        ".validate": "newData.isNumber() && newData.val() === (data.exists() ? data.val() + 1 : 1)"
+      }
+    },
+    "registers": {
+      ".read": true,
+      "$code": {
+        ".write": "!data.exists()",
+        ".validate": "newData.hasChildren(['code', 'createdAt']) && newData.child('code').val() === $code && root.child('meta/registerCounter').exists()"
+      }
+    },
+    "sales": {
+      ".read": true,
+      "$register": {
+        "$ticket": {
+          ".write": "root.child('registers').child($register).exists()",
+          ".validate": "newData.hasChildren(['ticketId', 'registerCode', 'seq', 'createdAt', 'totalMillimes', 'printStatus', 'lines']) && newData.child('ticketId').val() === $ticket && newData.child('registerCode').val() === $register && (!data.exists() || (data.child('seq').val() === newData.child('seq').val() && data.child('createdAt').val() === newData.child('createdAt').val() && data.child('totalMillimes').val() === newData.child('totalMillimes').val() && (data.child('printStatus').val() !== 'PRINTED' || newData.child('printStatus').val() === 'PRINTED')))",
+          "printStatus": { ".validate": "newData.val() === 'PENDING' || newData.val() === 'PRINTED' || newData.val() === 'FAILED'" },
+          "totalMillimes": { ".validate": "newData.isNumber() && newData.val() >= 0" }
+        }
+      }
+    }
+  }
+}

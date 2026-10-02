@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "239737257027",
+    "firebase_url": "https://poslik-caisse-msahel-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "poslik-caisse-msahel",
+    "storage_bucket": "poslik-caisse-msahel.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239737257027:android:b1a44606ddaa9ea44968f6",
+        "android_client_info": {
+          "package_name": "tn.poslik.caisse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm4S3BJU0dvwWh-iLHJzan5KduqSRUEFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
