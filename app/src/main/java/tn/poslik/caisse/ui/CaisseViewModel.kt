@@ -57,6 +57,10 @@ class CaisseViewModel(private val container: AppContainer) : ViewModel() {
         if (q <= 0) it - productId else it + (productId to q)
     }
 
+    fun clearCart() {
+        quantities.value = emptyMap()
+    }
+
     fun checkout() {
         val lines = cart.value
         if (lines.isEmpty() || _busy.value) return
